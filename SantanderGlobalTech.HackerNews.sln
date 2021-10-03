@@ -1,0 +1,93 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SantanderGlobalTech.HackerNews.Api", "SantanderGlobalTech.HackerNews.Api\SantanderGlobalTech.HackerNews.Api.csproj", "{1BBDF4C0-348F-4561-9459-0C81B5B02671}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SantanderGlobalTech.HackerNews.Domain", "SantanderGlobalTech.HackerNews.Domain\SantanderGlobalTech.HackerNews.Domain.csproj", "{BF07AC59-6B4C-4DA1-99DD-4689FABA04F0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SantanderGlobalTech.HackerNews.Infra.Data", "SantanderGlobalTech.HackerNews.Infra.Data\SantanderGlobalTech.HackerNews.Infra.Data.csproj", "{F9E11D99-BAC9-475D-A641-C52D152F6B12}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SantanderGlobalTech.HackerNews.CrossCutting.IoC", "SantanderGlobalTech.HackerNews.CrossCutting.IoC\SantanderGlobalTech.HackerNews.CrossCutting.IoC.csproj", "{EA8880DA-8335-4280-B71B-6249B64AE650}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SantanderGlobalTech.HackerNews.Application", "SantanderGlobalTech.HackerNews.Application\SantanderGlobalTech.HackerNews.Application.csproj", "{CBC8E111-3FC4-4B9B-A07B-462C8FF5894C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{D8EC04DE-8C32-4960-A242-C024890E3B53}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{2D7EBD63-FC51-4D92-96C4-1AD0CF23D26B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{56E11E12-75B7-4BBC-8F56-6EA1B5E03FEA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{F1E7E250-9FCA-4B30-8875-0A8D604945DE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CrossCutting", "CrossCutting", "{80BD8323-1FB2-4C49-A9B9-F466C3B781BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SantanderGlobalTech.HackerNews.Application.Test", "SantanderGlobalTech.HackerNews.Application.Test\SantanderGlobalTech.HackerNews.Application.Test.csproj", "{5365413B-9E21-4830-9CBB-E735BF72608D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SantanderGlobalTech.HackerNews.Api.Test", "SantanderGlobalTech.HackerNews.Api.Test\SantanderGlobalTech.HackerNews.Api.Test.csproj", "{624A0FDF-3978-4D9C-85BE-095078730691}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SantanderGlobalTech.HackerNews.Mock", "SantanderGlobalTech.HackerNews.Mock\SantanderGlobalTech.HackerNews.Mock.csproj", "{B5302D2E-A3AD-456C-8B8C-2BB4A5134281}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{351D762F-9B87-424C-A998-8B9B10EED001}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		build.cake = build.cake
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1BBDF4C0-348F-4561-9459-0C81B5B02671}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BBDF4C0-348F-4561-9459-0C81B5B02671}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BBDF4C0-348F-4561-9459-0C81B5B02671}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BBDF4C0-348F-4561-9459-0C81B5B02671}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF07AC59-6B4C-4DA1-99DD-4689FABA04F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF07AC59-6B4C-4DA1-99DD-4689FABA04F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF07AC59-6B4C-4DA1-99DD-4689FABA04F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF07AC59-6B4C-4DA1-99DD-4689FABA04F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9E11D99-BAC9-475D-A641-C52D152F6B12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9E11D99-BAC9-475D-A641-C52D152F6B12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9E11D99-BAC9-475D-A641-C52D152F6B12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9E11D99-BAC9-475D-A641-C52D152F6B12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA8880DA-8335-4280-B71B-6249B64AE650}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA8880DA-8335-4280-B71B-6249B64AE650}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA8880DA-8335-4280-B71B-6249B64AE650}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA8880DA-8335-4280-B71B-6249B64AE650}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBC8E111-3FC4-4B9B-A07B-462C8FF5894C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBC8E111-3FC4-4B9B-A07B-462C8FF5894C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBC8E111-3FC4-4B9B-A07B-462C8FF5894C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBC8E111-3FC4-4B9B-A07B-462C8FF5894C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5365413B-9E21-4830-9CBB-E735BF72608D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5365413B-9E21-4830-9CBB-E735BF72608D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5365413B-9E21-4830-9CBB-E735BF72608D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5365413B-9E21-4830-9CBB-E735BF72608D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{624A0FDF-3978-4D9C-85BE-095078730691}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{624A0FDF-3978-4D9C-85BE-095078730691}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{624A0FDF-3978-4D9C-85BE-095078730691}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{624A0FDF-3978-4D9C-85BE-095078730691}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5302D2E-A3AD-456C-8B8C-2BB4A5134281}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5302D2E-A3AD-456C-8B8C-2BB4A5134281}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5302D2E-A3AD-456C-8B8C-2BB4A5134281}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5302D2E-A3AD-456C-8B8C-2BB4A5134281}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1BBDF4C0-348F-4561-9459-0C81B5B02671} = {F1E7E250-9FCA-4B30-8875-0A8D604945DE}
+		{BF07AC59-6B4C-4DA1-99DD-4689FABA04F0} = {D8EC04DE-8C32-4960-A242-C024890E3B53}
+		{F9E11D99-BAC9-475D-A641-C52D152F6B12} = {2D7EBD63-FC51-4D92-96C4-1AD0CF23D26B}
+		{EA8880DA-8335-4280-B71B-6249B64AE650} = {80BD8323-1FB2-4C49-A9B9-F466C3B781BB}
+		{CBC8E111-3FC4-4B9B-A07B-462C8FF5894C} = {D8EC04DE-8C32-4960-A242-C024890E3B53}
+		{5365413B-9E21-4830-9CBB-E735BF72608D} = {56E11E12-75B7-4BBC-8F56-6EA1B5E03FEA}
+		{624A0FDF-3978-4D9C-85BE-095078730691} = {56E11E12-75B7-4BBC-8F56-6EA1B5E03FEA}
+		{B5302D2E-A3AD-456C-8B8C-2BB4A5134281} = {56E11E12-75B7-4BBC-8F56-6EA1B5E03FEA}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E74FC405-915A-47F1-88F6-3C3240E00896}
+	EndGlobalSection
+EndGlobal

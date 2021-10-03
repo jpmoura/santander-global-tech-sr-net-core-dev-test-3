@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SantanderGlobalTech.HackerNews.Api</name>
+    </assembly>
+    <members>
+        <member name="T:SantanderGlobalTech.HackerNews.Api.Controllers.IndexController">
+            <summary>
+            Index Controller
+            </summary>
+        </member>
+        <member name="F:SantanderGlobalTech.HackerNews.Api.Controllers.IndexController.listStoriesUseCaseAsync">
+            <summary>
+            Use case responsible to list the best stories of HackerNews
+            </summary>
+        </member>
+        <member name="M:SantanderGlobalTech.HackerNews.Api.Controllers.IndexController.#ctor(SantanderGlobalTech.HackerNews.Domain.Contracts.Application.IUseCaseAsync{SantanderGlobalTech.HackerNews.Domain.Requests.ListBestStoriesRequest,SantanderGlobalTech.HackerNews.Domain.Responses.ListBestStoriesResponse})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="listStoriesUseCaseAsync">Use case that will list the best stories on HackerNews</param>
+        </member>
+        <member name="M:SantanderGlobalTech.HackerNews.Api.Controllers.IndexController.GetStories">
+            <summary>
+            Get the 20 best stories in HackerNews
+            </summary>
+            <returns>A collection of the best 20 stories in HackerNews</returns>
+        </member>
+        <member name="T:SantanderGlobalTech.HackerNews.Api.DTOs.Story.StoryDto">
+            <summary>
+            Story entity Data Transfer Object
+            </summary>
+        </member>
+        <member name="P:SantanderGlobalTech.HackerNews.Api.DTOs.Story.StoryDto.Title">
+            <summary>
+            The title of the story
+            </summary>
+        </member>
+        <member name="P:SantanderGlobalTech.HackerNews.Api.DTOs.Story.StoryDto.Uri">
+            <summary>
+            The URL of the story
+            </summary>
+        </member>
+        <member name="P:SantanderGlobalTech.HackerNews.Api.DTOs.Story.StoryDto.PostedBy">
+            <summary>
+            The username of the story's author
+            </summary>
+        </member>
+        <member name="P:SantanderGlobalTech.HackerNews.Api.DTOs.Story.StoryDto.Time">
+            <summary>
+            Creation date of the story (UTC)
+            </summary>
+        </member>
+        <member name="P:SantanderGlobalTech.HackerNews.Api.DTOs.Story.StoryDto.Score">
+            <summary>
+            The story's score
+            </summary>
+        </member>
+        <member name="P:SantanderGlobalTech.HackerNews.Api.DTOs.Story.StoryDto.CommentCount">
+            <summary>
+            Number of comments in the story
+            </summary>
+        </member>
+        <member name="M:SantanderGlobalTech.HackerNews.Api.DTOs.Story.StoryDto.From(SantanderGlobalTech.HackerNews.Domain.Entities.Story)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="story">Story entity that will be converted into StoryDTO</param>
+        </member>
+        <member name="T:SantanderGlobalTech.HackerNews.Api.Program">
+            <summary>
+            Application main file
+            </summary>
+        </member>
+        <member name="M:SantanderGlobalTech.HackerNews.Api.Program.Main(System.String[])">
+            <summary>
+            Entry point
+            </summary>
+            <param name="args">Argument list</param>
+        </member>
+        <member name="M:SantanderGlobalTech.HackerNews.Api.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            Create the Web host
+            </summary>
+            <param name="args">Argument list</param>
+            <returns>Builder of web host</returns>
+        </member>
+        <member name="T:SantanderGlobalTech.HackerNews.Api.Startup">
+            <summary>
+            Web Host startup class
+            </summary>
+        </member>
+        <member name="M:SantanderGlobalTech.HackerNews.Api.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            Startup the application
+            </summary>
+            <param name="configuration">Application configuration</param>
+            <param name="env">Host environment</param>
+        </member>
+        <member name="P:SantanderGlobalTech.HackerNews.Api.Startup.Configuration">
+            <summary>
+            Application configuration
+            </summary>
+        </member>
+        <member name="P:SantanderGlobalTech.HackerNews.Api.Startup.Env">
+            <summary>
+            Host environment
+            </summary>
+        </member>
+        <member name="M:SantanderGlobalTech.HackerNews.Api.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Configure all necessary services
+            </summary>
+            <param name="services">Collection of services used by the application</param>
+        </member>
+        <member name="M:SantanderGlobalTech.HackerNews.Api.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            Configure the application
+            </summary>
+            <param name="app">Web Application</param>
+            <param name="env">Running environment</param>
+        </member>
+    </members>
+</doc>
