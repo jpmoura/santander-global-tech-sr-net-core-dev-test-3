@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using SantanderGlobalTech.HackerNews.Infra.IoC;
+using Serilog;
 using System;
 using System.IO;
 using System.Reflection;
@@ -89,6 +90,8 @@ namespace SantanderGlobalTech.HackerNews.Api
         /// <param name="env">Running environment</param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseSerilogRequestLogging();
+
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
