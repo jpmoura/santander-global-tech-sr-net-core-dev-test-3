@@ -5,6 +5,8 @@
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=jpmoura_SantanderGlobalTech_NetCoreSenior_Test3&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=jpmoura_SantanderGlobalTech_NetCoreSenior_Test3)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=jpmoura_SantanderGlobalTech_NetCoreSenior_Test3&metric=sqale_index)](https://sonarcloud.io/dashboard?id=jpmoura_SantanderGlobalTech_NetCoreSenior_Test3)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=jpmoura_SantanderGlobalTech_NetCoreSenior_Test3&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=jpmoura_SantanderGlobalTech_NetCoreSenior_Test3)
+[![CD](https://github.com/jpmoura/santander-global-tech-sr-net-core-dev-test-3/actions/workflows/cd.yml/badge.svg)](https://github.com/jpmoura/santander-global-tech-sr-net-core-dev-test-3/actions/workflows/cd.yml)
+[![CI](https://github.com/jpmoura/santander-global-tech-sr-net-core-dev-test-3/actions/workflows/ci.yml/badge.svg)](https://github.com/jpmoura/santander-global-tech-sr-net-core-dev-test-3/actions/workflows/ci.yml)
 
 This repo contains my implementation of the test #3 of [Santander Global Tech](https://santanderglobaltech.com/en/).
 
