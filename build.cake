@@ -24,7 +24,7 @@ var coverageFilePath = coverageDirectory + File(coverageFilename + coverageFileE
 var jsonFilePath = coverageDirectory + File(coverageFilename + ".json");
 
 /*  Sonar configuration */
-string sonarAuthToken = "YOUR_TOKEN_HERE";
+string sonarAuthToken = Argument<string>("token", "");
 
 Task("Build")
     .Does(() => {
