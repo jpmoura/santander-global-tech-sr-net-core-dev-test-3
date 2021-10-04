@@ -94,6 +94,11 @@ namespace SantanderGlobalTech.HackerNews.Api
 
             app.UseRouting();
 
+            if (!env.IsEnvironment("unit-testing"))
+            {
+                app.UseSentryTracing();
+            }
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

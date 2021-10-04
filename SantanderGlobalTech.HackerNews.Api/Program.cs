@@ -56,6 +56,12 @@ namespace SantanderGlobalTech.HackerNews.Api
                                                       {
                                                           options.AddServerHeader = false;
                                                       });
+                                                      webBuilder.UseSentry(o =>
+                                                      {
+                                                          o.Dsn = "https://9687ea30a87442e78b27efceaeb6b9c5@o1024826.ingest.sentry.io/5990681";
+                                                          o.Debug = false;
+                                                          o.TracesSampleRate = 1.0;
+                                                      });
                                                   });
         }
     }
