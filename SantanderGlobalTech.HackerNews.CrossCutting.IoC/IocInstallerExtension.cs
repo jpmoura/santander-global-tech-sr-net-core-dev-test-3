@@ -1,4 +1,5 @@
 using FluentValidation;
+using Flurl.Http;
 using Microsoft.Extensions.DependencyInjection;
 using SantanderGlobalTech.HackerNews.Application.UseCases.Story;
 using SantanderGlobalTech.HackerNews.Application.Validators.Story;
@@ -6,6 +7,7 @@ using SantanderGlobalTech.HackerNews.Domain.Contracts.Application;
 using SantanderGlobalTech.HackerNews.Domain.Contracts.Infra.Data;
 using SantanderGlobalTech.HackerNews.Domain.Requests;
 using SantanderGlobalTech.HackerNews.Domain.Responses;
+using SantanderGlobalTech.HackerNews.Infra.Data.Http;
 using SantanderGlobalTech.HackerNews.Infra.Data.Repositories;
 
 namespace SantanderGlobalTech.HackerNews.Infra.IoC
@@ -20,6 +22,18 @@ namespace SantanderGlobalTech.HackerNews.Infra.IoC
         private static IServiceCollection AddRepositories(this IServiceCollection services)
         {
             services.AddSingleton<IHackerNewsRepository, HackerNewsRepository>();
+
+            return services;
+        }
+
+        /// <summary>
+        /// Adds all HTTP related services in service collection
+        /// </summary>
+        /// <param name="services">Current service collection</param>
+        /// <returns>Service collection with HTTP services added</returns>
+        private static IServiceCollection AddHttp(this IServiceCollection services)
+        {
+            FlurlHttp.Configure(settings => settings.HttpClientFactory = new PollyHttpClientFactory());
 
             return services;
         }
@@ -71,6 +85,7 @@ namespace SantanderGlobalTech.HackerNews.Infra.IoC
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
             services.AddRepositories();
+            services.AddHttp();
 
             return services;
         }
