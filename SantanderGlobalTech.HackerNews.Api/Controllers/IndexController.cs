@@ -38,7 +38,7 @@ namespace SantanderGlobalTech.HackerNews.Api.Controllers
         /// <returns>A collection of the best 20 stories in HackerNews</returns>
         [Route("best20")]
         [HttpGet]
-        public async Task<IEnumerable<StoryDto>> GetStories()
+        public async Task<IAsyncEnumerable<StoryDto>> GetStories()
         {
             ListBestStoriesRequest request = new ListBestStoriesRequest
             {
@@ -48,7 +48,7 @@ namespace SantanderGlobalTech.HackerNews.Api.Controllers
 
             ListBestStoriesResponse response = await listStoriesUseCaseAsync.ExecuteAsync(request);
 
-            return response.Stories.Select((story) => StoryDto.From(story));
+            return response.Stories.Select((story) => StoryDto.From(story)).ToAsyncEnumerable();
         }
     }
 }
