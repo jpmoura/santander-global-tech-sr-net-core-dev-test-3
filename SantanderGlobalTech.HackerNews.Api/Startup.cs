@@ -90,7 +90,10 @@ namespace SantanderGlobalTech.HackerNews.Api
         /// <param name="env">Running environment</param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseSerilogRequestLogging();
+            if (!env.IsEnvironment("unit-testing"))
+            {
+                app.UseSerilogRequestLogging();
+            }
 
             app.UseRouting();
 
