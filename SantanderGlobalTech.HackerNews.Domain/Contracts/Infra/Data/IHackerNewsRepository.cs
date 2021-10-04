@@ -18,6 +18,6 @@ namespace SantanderGlobalTech.HackerNews.Domain.Contracts.Infra.Data
         /// <typeparam name="TItem">Item type</typeparam>
         /// <param name="itemId">Item ID</param>
         /// <returns>The Item</returns>
-        Task<TItem> GetItemAsync<TItem>(uint itemId);
+        Task<TItem> GetItemAsync<TItem>(uint itemId) where TItem : class;
     }
 }

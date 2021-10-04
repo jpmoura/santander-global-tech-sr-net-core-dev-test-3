@@ -2,6 +2,10 @@ using Flurl;
 using Flurl.Http;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Linq;
+using Polly;
+using Polly.Fallback;
 using SantanderGlobalTech.HackerNews.Domain.Contracts.Infra.Data;
 using System;
 using System.Collections.Generic;
@@ -33,11 +37,27 @@ namespace SantanderGlobalTech.HackerNews.Infra.Data.Repositories
         private readonly int cacheTtlInMinutes;
 
         /// <summary>
+        /// Fallback policy for Best Stories data fetch
+        /// </summary>
+        private readonly AsyncFallbackPolicy<IEnumerable<uint>> bestStoriesFallback;
+
+        /// <summary>
+        /// Fallback policy for Item data fetch
+        /// </summary>
+        private readonly AsyncFallbackPolicy<dynamic> itemFallback;
+
+        /// <summary>
+        /// Repository logger
+        /// </summary>
+        private readonly ILogger<HackerNewsRepository> logger;
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="configuration">App configuration</param>
         /// <param name="cache">App cache</param>
-        public HackerNewsRepository(IConfiguration configuration, IMemoryCache cache)
+        /// <param name="logger">Repository logger</param>
+        public HackerNewsRepository(IConfiguration configuration, IMemoryCache cache, ILogger<HackerNewsRepository> logger)
         {
             bestStoriesUrl = configuration["HackerNews:BestStoriesUrl"];
             getItemUrl = configuration["HackerNews:GetItemUrl"];
@@ -50,6 +70,10 @@ namespace SantanderGlobalTech.HackerNews.Infra.Data.Repositories
 
             this.cacheTtlInMinutes = cacheTtlInMinutes;
             this.cache = cache;
+            this.logger = logger;
+
+            bestStoriesFallback = Policy<IEnumerable<uint>>.Handle<Exception>().FallbackAsync(Enumerable.Empty<uint>(), (stories) => { this.logger.LogWarning(stories.Exception, "Best stories fallback fired"); return Task.CompletedTask; });
+            itemFallback = Policy<object>.Handle<Exception>().FallbackAsync((object)null, (item) => { this.logger.LogWarning(item.Exception, "Best stories fallback fired"); return Task.CompletedTask; });
         }
 
         /// <summary>
@@ -59,7 +83,7 @@ namespace SantanderGlobalTech.HackerNews.Infra.Data.Repositories
         /// <returns>A collection of IDs of the best stories</returns>
         public async Task<IEnumerable<uint>> ListBestStoriesIdAsync(int? limit)
         {
-            IEnumerable<uint> bestStories = await bestStoriesUrl.GetJsonAsync<IEnumerable<uint>>();
+            IEnumerable<uint> bestStories = await bestStoriesFallback.ExecuteAsync(() => bestStoriesUrl.GetJsonAsync<IEnumerable<uint>>());
 
             if (limit.HasValue)
             {
@@ -70,15 +94,17 @@ namespace SantanderGlobalTech.HackerNews.Infra.Data.Repositories
         }
 
         /// <summary>
-        /// Get a TItem that is not in Cache ans cache it
+        /// Get a TItem that is not in Cache and caches it. If Fallback value is provided then its TTL is set to the minimum TTL possible
         /// </summary>
         /// <typeparam name="TItem">Item that will be cached</typeparam>
         /// <param name="cacheEntry">New cache entry</param>
         /// <returns>TItem</returns>
-        private Task<TItem> GetItemWithoutCacheAsync<TItem>(ICacheEntry cacheEntry)
+        private async Task<TItem> GetItemWithoutCacheAsync<TItem>(ICacheEntry cacheEntry) where TItem : class
         {
-            cacheEntry.AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(cacheTtlInMinutes);
-            return string.Format(getItemUrl, cacheEntry.Key).GetJsonAsync<TItem>();
+            dynamic item = await itemFallback.ExecuteAsync(() => string.Format(getItemUrl, cacheEntry.Key).GetJsonAsync<dynamic>());
+            TimeSpan ttl = item == null ? TimeSpan.FromMilliseconds(1) : TimeSpan.FromMinutes(cacheTtlInMinutes);
+            cacheEntry.AbsoluteExpirationRelativeToNow = ttl;
+            return ((JObject)item)?.ToObject<TItem>();
         }
 
         /// <summary>
@@ -87,7 +113,7 @@ namespace SantanderGlobalTech.HackerNews.Infra.Data.Repositories
         /// <typeparam name="TItem">TItem that will be serialized the response</typeparam>
         /// <param name="itemId">TItem ID</param>
         /// <returns>The TItem found</returns>
-        public Task<TItem> GetItemAsync<TItem>(uint itemId)
+        public Task<TItem> GetItemAsync<TItem>(uint itemId) where TItem : class
         {
             return cache.GetOrCreateAsync(itemId, (entry) => GetItemWithoutCacheAsync<TItem>(entry));
         }

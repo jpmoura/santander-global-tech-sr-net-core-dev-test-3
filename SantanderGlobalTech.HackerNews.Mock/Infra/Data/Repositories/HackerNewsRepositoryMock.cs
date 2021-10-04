@@ -6,7 +6,7 @@ namespace SantanderGlobalTech.HackerNews.Mock.Infra.Data.Repositories
 {
     public class HackerNewsRepositoryMock : BaseRepositoryMock<IHackerNewsRepository>
     {
-        public HackerNewsRepositoryMock SetupGetItemAsync<TItem>(TItem itemToReturn)
+        public HackerNewsRepositoryMock SetupGetItemAsync<TItem>(TItem itemToReturn) where TItem : class
         {
             mock.Setup(repository => repository.GetItemAsync<TItem>(It.IsAny<uint>())).ReturnsAsync(itemToReturn);
             return this;
