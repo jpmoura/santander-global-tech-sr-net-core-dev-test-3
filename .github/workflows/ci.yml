@@ -1,0 +1,36 @@
+name: "CI"
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - release/**
+      - feature/**
+      - master
+  push:
+    branches:
+      - develop
+      - master
+
+jobs:
+  validate-changes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.2.0
+        with:
+          fetch-depth: 0
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.x'
+
+      - name: Install coverlet tool globally
+        run: dotnet tool install --global coverlet.console
+
+      - name: Run cake Sonar task
+        uses: cake-build/cake-action@v1
+        with:
+          target: Sonar
+          arguments: |
+            token: {{ SONAR_TOKEN }}
