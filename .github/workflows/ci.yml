@@ -29,4 +29,4 @@ jobs:
         with:
           target: Sonar
           arguments: |
-            token: ${{ SONAR_TOKEN }}
+            token: "${{ SONAR_TOKEN }}"
